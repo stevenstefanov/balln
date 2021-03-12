@@ -1,2 +1,2 @@
-var taemA = document.querySelector(".teamA")
-var taemB = document.querySelector(".teamB")
+var teamA = document.querySelector("teamA");
+var teamB = document.querySelector("teamB");
