@@ -2,6 +2,6 @@
 
 ## Team:
 
-### Steven Stefanov\
-### Eli Almonte\
-### Abou Drabo\
+#### Steven Stefanov
+#### Eli Almonte
+#### Abou Drabo
