@@ -15,3 +15,43 @@ var gameLocation = document.querySelector("");
 
 
 
+    function getGameData() {
+        fetch("https://api-basketball.p.rapidapi.com/games?h2h=134-145", {
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-key": "a02badb577msh53c62c24f7e4112p157b9bjsne248c865880a",
+                "x-rapidapi-host": "api-basketball.p.rapidapi.com"
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                response.json().then(function (data) {
+                    console.log(data);
+                    displayTeamData(data);
+                });
+            }
+        })
+        .catch(err => {
+            console.error(err);
+        });
+    }
+    
+    function displayTeamData(data) {
+        var teamAName = data.response[14].teams.away.name;
+        var teamBName = data.response[14].teams.home.name;
+    
+        var teamATitle = document.createElement('span');
+        teamATitle.textContent = teamAName;
+    
+        var teamBTitle = document.createElement('span');
+        teamBTitle.textContent = teamBName;
+    
+        teamAEl.appendChild(teamATitle);
+        teamBEl.appendChild(teamBTitle);
+    
+        console.log(teamATitle);
+        console.log(teamBTitle);
+    
+    }
+    
+    getGameData();
