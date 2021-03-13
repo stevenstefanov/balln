@@ -13,5 +13,3 @@ var gameLocation = document.querySelector("");
     // save location for map api
 
 
-
-
