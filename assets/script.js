@@ -1,6 +1,6 @@
 var teamAEl = document.querySelector("#teamA");
 var teamBEl = document.querySelector("#teamB");
-// var gameTime = document.querySelector("");
+var gameTime = document.querySelector("#countdown");
 // var gameLocation = document.querySelector("");
 
 
@@ -19,6 +19,7 @@ function getGameData() {
             response.json().then(function (data) {
                 console.log(data);
                 displayTeamData(data);
+                gameCountdown();
             });
         }
     })
@@ -63,10 +64,16 @@ function displayTeamData(data) {
     logoB.setAttribute("alt", "Team Logo");
     document.getElementById("teamB").appendChild(logoB);
 
-     // GAME TIME
+    
      
     
 }
 
+// GAME TIME
+function gameCountdown() {
+    var time = moment().format("dddd, MMMM Do h:mm a");
+    gameTime.textContent = time;
+};
+
     
-    getGameData();
+getGameData();
