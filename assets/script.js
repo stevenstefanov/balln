@@ -43,9 +43,6 @@ function displayTeamData(data) {
     
     teamAEl.appendChild(teamATitle);
     teamBEl.appendChild(teamBTitle);
-    
-    console.log(teamATitle);
-    console.log(teamBTitle);
 
     // TEAM LOGOS
     var teamALogo = data.response[14].teams.away.logo;
@@ -65,7 +62,11 @@ function displayTeamData(data) {
     logoB.setAttribute("width", "120");
     logoB.setAttribute("alt", "Team Logo");
     document.getElementById("teamB").appendChild(logoB);
+
+     // GAME TIME
+     
     
-    }
+}
+
     
     getGameData();
