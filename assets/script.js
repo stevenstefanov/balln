@@ -1,7 +1,9 @@
 var teamAEl = document.querySelector("#teamA");
 var teamBEl = document.querySelector("#teamB");
-var gameTime = document.querySelector("#countdown");
+var gameTime = document.querySelector("#gametime");
+var countdown = document.querySelector("countdown");
 // var gameLocation = document.querySelector("");
+var gameInfo;
 
 $(document).ready(function () {
 
@@ -19,6 +21,7 @@ $(document).ready(function () {
                     response.json().then(function (data) {
                         console.log(data);
                         displayTeamData(data);
+                        gameCountdown(data);
                     });
                 }
             })
@@ -63,14 +66,24 @@ $(document).ready(function () {
         logoB.setAttribute("alt", "Team Logo");
         document.getElementById("teamB").appendChild(logoB);
     }
-
-
-    getGameData();
   
   // GAME TIME
-function gameCountdown() {
-    var time = moment().format("dddd, MMMM Do h:mm a");
+function gameCountdown(data) {
+    var time = moment(data.response[14].date).format("dddd, MMMM Do h:mm a");
     gameTime.textContent = time;
+
+
+    var eventTime= 1366549200; // Timestamp - Sun, 21 Apr 2013 13:00:00 GMT
+    var currentTime = 1366547400; // Timestamp - Sun, 21 Apr 2013 12:30:00 GMT
+    var diffTime = eventTime - currentTime;
+    var duration = moment.duration(diffTime*1000, 'milliseconds');
+    var interval = 1000;
+
+    setInterval(function(){
+        duration = moment.duration(duration - interval, 'milliseconds');
+        $('#countdown').text(duration.hours() + ":" + duration.minutes() + ":" + duration.seconds())
+    }, interval);
+
 };
 
     /* Ticketmaster API*/
@@ -107,6 +120,7 @@ function gameCountdown() {
             // This time, we do not end up here!
         }
     });
-    
 
-   
+
+    getGameData();
+})
