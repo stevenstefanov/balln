@@ -1,12 +1,12 @@
+var teamAEl = document.querySelector("#teamA");
+var teamBEl = document.querySelector("#teamB");
+var gameTime = document.querySelector("#countdown");
+// var gameLocation = document.querySelector("");
+
 $(document).ready(function () {
 
-    var teamAEl = document.querySelector("#teamA");
-    var teamBEl = document.querySelector("#teamB");
-    // var gameTime = document.querySelector("");
-    // var gameLocation = document.querySelector("");
-
-    // Function fetches from basketball api, console logs data, then calls displayTeamData function
-    function getGameData() {
+  // Function fetches from basketball api, console logs data, then calls displayTeamData function
+  function getGameData() {
         fetch("https://api-basketball.p.rapidapi.com/games?h2h=134-145", {
             "method": "GET",
             "headers": {
@@ -62,14 +62,16 @@ $(document).ready(function () {
         logoB.setAttribute("width", "120");
         logoB.setAttribute("alt", "Team Logo");
         document.getElementById("teamB").appendChild(logoB);
-
-        // GAME TIME
-
-
     }
 
 
     getGameData();
+  
+  // GAME TIME
+function gameCountdown() {
+    var time = moment().format("dddd, MMMM Do h:mm a");
+    gameTime.textContent = time;
+};
 
     /* Ticketmaster API*/
     $.ajax({
@@ -105,7 +107,6 @@ $(document).ready(function () {
             // This time, we do not end up here!
         }
     });
+    
 
-
-
-});
+   
