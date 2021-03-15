@@ -1,14 +1,14 @@
 var teamAEl = document.querySelector("#teamA");
 var teamBEl = document.querySelector("#teamB");
-var gameTime = document.querySelector("#gametime");
-var countdown = document.querySelector("countdown");
+var gameTimeEl = document.querySelector("#gametime");
+var countdownEl = document.querySelector("countdown");
 // var gameLocation = document.querySelector("");
 var gameInfo;
 
 $(document).ready(function () {
 
-  // Function fetches from basketball api, console logs data, then calls displayTeamData function
-  function getGameData() {
+    // Function fetches from basketball api, console logs data, then calls displayTeamData function
+    function getGameData() {
         fetch("https://api-basketball.p.rapidapi.com/games?h2h=134-145", {
             "method": "GET",
             "headers": {
@@ -16,21 +16,21 @@ $(document).ready(function () {
                 "x-rapidapi-host": "api-basketball.p.rapidapi.com"
             }
         })
-            .then(response => {
-                if (response.ok) {
-                    response.json().then(function (data) {
-                        console.log(data);
-                        displayTeamData(data);
-                        gameCountdown(data);
-                    });
-                }
-            })
-            .catch(err => {
-                console.error(err);
-            });
+        .then(response => {
+            if (response.ok) {
+                response.json().then(function (data) {
+                    console.log(data);
+                    displayTeamData(data);
+                    gameCountdown(data);
+                });
+            }
+        })
+        .catch(err => {
+            console.error(err);
+        });
     }
 
-    // Function displays all team data - name, logo, etc
+    // Function displays team data - name, logo, etc
     function displayTeamData(data) {
 
         // TEAM NAMES
@@ -67,24 +67,30 @@ $(document).ready(function () {
         document.getElementById("teamB").appendChild(logoB);
     }
   
-  // GAME TIME
-function gameCountdown(data) {
-    var time = moment(data.response[14].date).format("dddd, MMMM Do h:mm a");
-    gameTime.textContent = time;
+    // GAME TIME
+    function gameCountdown(data) {
 
+        // Displays when the game will take place
+        var time = moment(data.response[14].date).format("dddd, MMMM Do h:mm a");
+        gameTimeEl.textContent = time;
 
-    var eventTime= 1366549200; // Timestamp - Sun, 21 Apr 2013 13:00:00 GMT
-    var currentTime = 1366547400; // Timestamp - Sun, 21 Apr 2013 12:30:00 GMT
-    var diffTime = eventTime - currentTime;
-    var duration = moment.duration(diffTime*1000, 'milliseconds');
-    var interval = 1000;
+        // Countdown from now till game
+        var countDownDate = new Date(data.response[14].date).getTime();
 
-    setInterval(function(){
-        duration = moment.duration(duration - interval, 'milliseconds');
-        $('#countdown').text(duration.hours() + ":" + duration.minutes() + ":" + duration.seconds())
-    }, interval);
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
 
-};
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+                + minutes + "m " + seconds + "s ";
+        }, 1000);
+    };
 
     /* Ticketmaster API*/
     $.ajax({
