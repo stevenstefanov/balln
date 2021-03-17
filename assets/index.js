@@ -1,4 +1,5 @@
-var searchFormEl = document.querySelector(‘#search-form’);
+var searchFormEl = document.querySelector("#search-form");
+
 function handleSearchFormSubmit(event) {
   event.preventDefault();
   var teamsDropdownVal = document.querySelector(‘#teams-dropdown’).value;
