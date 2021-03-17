@@ -16,11 +16,15 @@ body {
 .teams {
 
 }
-.teamA {
+#teamA {
 
 }
   
-.teamB {
+#teamB {
+    display: flex;
+    flex-direction: column;
+     align-items: center;
+    
 }
 .countdown {
 
