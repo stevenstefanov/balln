@@ -93,11 +93,11 @@ $(document).ready(function () {
     };
 
 /* Ticketmaster API*/
-var team = document.location.search.replace("?team=", '')
+    var team = document.location.search.replace("?team=", '')
 
     $.ajax({
         type: "GET",
-        url: "https://app.ticketmaster.com/discovery/v2/events.json?keyword=' + team + '&apikey=wkeUKU7nGwu8KaAr6CW0pqhy3LP5gh4",
+        url: "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + team + "&apikey=wkeUKU7nGwu8KaAr6CW0pqhy3LP5gh4f",
         async: true,
         dataType: "json",
         success: function (res) {
@@ -121,7 +121,7 @@ var team = document.location.search.replace("?team=", '')
             };
 
             //nba card add the page
-            $("#upcominggames").html(nbaCardMarkUp);
+            $("#maps").html(nbaCardMarkUp);
         },
         error: function (xhr, status, err) {
             // This time, we do not end up here!
@@ -133,29 +133,29 @@ var team = document.location.search.replace("?team=", '')
 })
 
 
-var team = document.location.search.replace('?team=', ''); // los%20angles%20lakers
-var eventData = [];
-// loop
-var teams = eventData[i].name.split(' vs. '); // [ 'Los Angeles Lakers', 'Pheonix Suns' ]
-var team1 = teams[0] // LosAngeles Lakers -> losangeleslakers
-var team2 = teams[1] // Pheonix Suns -> pheonixsuns
-var teamIDs = {
-  losangeleslakers: 139,
-  atlantahawks: 142
-}
-function getStats(teamID) {
-  // fetch call form a team
-  // return win / loss as a string -> "W 24 / L 13"
-}
-function getLogo(team) {
-  // return our relative path
-  return  './assets/team-logos/' + team + '.svg';
-}
-function makeCard(team) {
-  var teamCode = team.lowerCase().replace(' ', ''); //LosAngeles Lakers -> losangeleslakers
-  var winLoss = getStats(teamIDs[ teamCode ]);
-  var logo = getLogo(teamCode);
-  // create HTML
-  // add classes and attributes
-  // append them to the DOM
-}
+// var team = document.location.search.replace('?team=', ''); // los%20angles%20lakers
+// var eventData = [];
+// // loop
+// var teams = eventData[i].name.split(' vs. '); // [ 'Los Angeles Lakers', 'Pheonix Suns' ]
+// var team1 = teams[0] // LosAngeles Lakers -> losangeleslakers
+// var team2 = teams[1] // Pheonix Suns -> pheonixsuns
+// var teamIDs = {
+//   losangeleslakers: 139,
+//   atlantahawks: 142
+// }
+// function getStats(teamID) {
+//   // fetch call form a team
+//   // return win / loss as a string -> "W 24 / L 13"
+// }
+// function getLogo(team) {
+//   // return our relative path
+//   return  './assets/team-logos/' + team + '.svg';
+// }
+// function makeCard(team) {
+//   var teamCode = team.lowerCase().replace(' ', ''); //LosAngeles Lakers -> losangeleslakers
+//   var winLoss = getStats(teamIDs[ teamCode ]);
+//   var logo = getLogo(teamCode);
+//   // create HTML
+//   // add classes and attributes
+//   // append them to the DOM
+// }
