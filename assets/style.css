@@ -6,39 +6,55 @@ body {
     text-align: center;
     background-image: url("images/social_share_default.png");
     background-size: cover;
-    background-repeat: no-repeat
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
 }
 #btn {
     background-color: lightgray;
     color: black;
     border-radius: 5px;
+    font-weight: bold;
 }
 .card{
   
 
 }
-
+h1 {
+   font-weight: bolder;
 }
-.teams {
-
+h5 {
+    font-weight: bolder;
+    background-color: rgb(32, 75, 214);
+    color: white;
 }
 #teamA {
-
-}
-  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}  
 #teamB {
     display: flex;
     flex-direction: column;
      align-items: center;
+}
+#countdown {
+    background-color: lightgrey;
+    border-radius: 5px;
+    width: fit-content;
+    margin-left: 40%;
+    font-size: 20px;
+
+}
+#gametime {
+    font-size: x-large;
+    font-weight: bolder;
+
+}
+#stats {
     
+          
 }
-.countdown {
+#map {
 
-}
-.timeandlocation {
-
-}
-.stats {
-   
-       
 }
