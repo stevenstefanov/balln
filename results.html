@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+    <title>Game Locator</title>
+<!-- foundation-float.min.css: Compressed CSS with legacy Float Grid -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation-float.min.css" integrity="sha256-4ldVyEvC86/kae2IBWw+eJrTiwNEbUUTmN0zkP4luL4=" crossorigin="anonymous">
+
+<!-- foundation-prototype.min.css: Compressed CSS with prototyping classes -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation-prototype.min.css" integrity="sha256-BiKflOunI0SIxlTOOUCQ0HgwXrRrRwBkIYppEllPIok=" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css"  type="text/css">
+</head>
+<body>
+    <header>
+        <div class="card" style="width: 900px; border-radius: 5px; background-color: #EAEAEA; padding: 10px;">
+            <h1>Game Finder</h1> 
+        </div>
+        <div>
+            <div>Back to Search</div>
+        </div>
+    </header>
+    <div class="card" style="width: 900px; height: 300px; border-radius: 5px; display: flex; flex-direction: row;">
+        <div class="teamA" style="width: 900px;; border-radius: 5px; background-color:#EAEAEA; margin: 10px;">
+            <h3 id="teamA"></h3>
+        </div>
+        <div class="teamB" style="width: 900px; border-radius: 5px; background-color: #EAEAEA; margin: 10px;">
+            <h3 id="teamB"></h3>
+        </div>
+    </div>
+    <div class="card" style="width: 900px; border-radius: 5px; background-color: #EAEAEA">
+        <p id>Time Until game:</p>
+        <h3 id="countdown"></h3>
+        <h3 id="gametime"></h3>
+    </div>
+    <div class="card" style="width: 900px; border-radius: 5px; background-color: #EAEAEA">
+        <h4>Stats of the game</h4>
+        <div id="stats">
+        </div>
+    </div>
+    <div class="card" style="width: 900px; border-radius: 5px; background-color: #EAEAEA">
+        <div>Upcoming Games</div>
+        <div id="map">
+            <!-- this is where nba cards will go -->
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="assets/script.js"></script>
+</body>
+</html>
