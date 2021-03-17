@@ -5,6 +5,36 @@ var countdownEl = document.querySelector("countdown");
 // var gameLocation = document.querySelector("");
 var gameInfo;
 
+var teamIds = { // eli's code
+    losangeleslakers: 139,
+    atlantahawks: 142
+  }
+
+function getLogo(team) {
+// return our relative path
+return  './assets/team-logos/' + team + '.svg';
+}
+function getStats(teamID) {
+    fetch("https://api-basketball.p.rapidapi.com/statistics?league=12&season=2019-2020&team=133", {
+	    "method": "GET",
+	    "headers": {
+            "x-rapidapi-key": "a02badb577msh53c62c24f7e4112p157b9bjsne248c865880a",
+            "x-rapidapi-host": "api-basketball.p.rapidapi.com"
+        }
+    })
+    .then(response => {
+        return response.json();
+    })
+    .then(data => {
+        console.log(data);
+        return "W " + data.response.games.wins.all.total + " / L " + data.response.games.loses.all.total;
+
+    })
+    .catch(err => {
+        console.error(err);
+    });
+}
+
 $(document).ready(function () {
 
     // Function fetches from basketball api, console logs data, then calls displayTeamData function
@@ -92,9 +122,21 @@ $(document).ready(function () {
         }, 1000);
     };
 
-/* Ticketmaster API*/
-    var team = document.location.search.replace("?team=", '')
+    var team = document.location.search.replace("?team=", "");
 
+    function getTeamInfo() {
+            var teamCode = team.toLowerCase().replace(' ', '');
+            var logo = getLogo(teamCode);
+            var teamId = teamIds[teamCode];
+            var winLoss = getStats(teamId);
+            console.log(winLoss);
+
+        // build and append HTML for team card
+    }
+
+    getTeamInfo();
+
+    /* Ticketmaster API*/
     $.ajax({
         type: "GET",
         url: "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + team + "&apikey=wkeUKU7nGwu8KaAr6CW0pqhy3LP5gh4f",
@@ -109,6 +151,9 @@ $(document).ready(function () {
 
             //concat markup stringthrough a loop
             for (let i = 0; i < eventData.length; i++) {
+                if(i === 0) {
+                    // code to handle timer
+                }
                 nbaCardMarkUp += `
                     <div class="nba-card">
                         <h3 class="nba-title">${eventData[i].name}</h3>
@@ -128,34 +173,5 @@ $(document).ready(function () {
         }
     });
 
-
     getGameData();
 })
-
-
-// var team = document.location.search.replace('?team=', ''); // los%20angles%20lakers
-// var eventData = [];
-// // loop
-// var teams = eventData[i].name.split(' vs. '); // [ 'Los Angeles Lakers', 'Pheonix Suns' ]
-// var team1 = teams[0] // LosAngeles Lakers -> losangeleslakers
-// var team2 = teams[1] // Pheonix Suns -> pheonixsuns
-// var teamIDs = {
-//   losangeleslakers: 139,
-//   atlantahawks: 142
-// }
-// function getStats(teamID) {
-//   // fetch call form a team
-//   // return win / loss as a string -> "W 24 / L 13"
-// }
-// function getLogo(team) {
-//   // return our relative path
-//   return  './assets/team-logos/' + team + '.svg';
-// }
-// function makeCard(team) {
-//   var teamCode = team.lowerCase().replace(' ', ''); //LosAngeles Lakers -> losangeleslakers
-//   var winLoss = getStats(teamIDs[ teamCode ]);
-//   var logo = getLogo(teamCode);
-//   // create HTML
-//   // add classes and attributes
-//   // append them to the DOM
-// }
