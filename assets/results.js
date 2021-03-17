@@ -1,9 +1,7 @@
-var teamAEl = document.querySelector("#teamA");
-var teamBEl = document.querySelector("#teamB");
+var teamEl = document.querySelector("#teamA");
 var gameTimeEl = document.querySelector("#gametime");
-var countdownEl = document.querySelector("countdown");
-// var gameLocation = document.querySelector("");
-var gameInfo;
+var countdownEl = document.querySelector("#countdown");
+var statsEl = document.querySelector("#stats")
 
 // Object with all teams and their ids
 var teamIds = {
@@ -36,9 +34,7 @@ var teamIds = {
     sanantoniospurs: 158,
     torontoraptors: 159,
     utahjazz: 160,
-    washingtonwizzards: 161,
-    teamlebron: 1412,
-    teamdurant: 2511
+    washingtonwizzards: 161
   }
 
 function getLogo(team) {
@@ -56,85 +52,71 @@ function getStats(teamID) {
         }
     })
     .then(response => {
-        return response.json();
-    })
-    .then(data => {
-        console.log(data);
-        return "W " + data.response.games.wins.all.total + " / L " + data.response.games.loses.all.total;
-
+        if (response.ok) {
+            response.json().then(function (data) {
+                console.log(data);
+                displayTeamData(data);
+                // gameCountdown(data);
+            });
+        }
     })
     .catch(err => {
         console.error(err);
     });
 }
 
-$(document).ready(function () {
-
-    // Function fetches from basketball api, console logs data, then calls displayTeamData function
-    function getGameData() {
-        fetch("https://api-basketball.p.rapidapi.com/games?h2h=134-145", {
-            "method": "GET",
-            "headers": {
-                "x-rapidapi-key": "a02badb577msh53c62c24f7e4112p157b9bjsne248c865880a",
-                "x-rapidapi-host": "api-basketball.p.rapidapi.com"
-            }
-        })
-        .then(response => {
-            if (response.ok) {
-                response.json().then(function (data) {
-                    console.log(data);
-                    displayTeamData(data);
-                    gameCountdown(data);
-                });
-            }
-        })
-        .catch(err => {
-            console.error(err);
-        });
-    }
-
     // Function displays team data - name, logo, etc
     function displayTeamData(data) {
 
         // TEAM NAMES
-        var teamAName = data.response[14].teams.away.name;
-        var teamBName = data.response[14].teams.home.name;
+        var teamName = data.response.team.name;
 
         // Creates span for titles with team names, the append to HTML EL
-        var teamATitle = document.createElement('span');
-        teamATitle.textContent = teamAName;
-
-        var teamBTitle = document.createElement('span');
-        teamBTitle.textContent = teamBName;
-
-        teamAEl.appendChild(teamATitle);
-        teamBEl.appendChild(teamBTitle);
+        var teamTitle = document.createElement('h2');
+        teamTitle.textContent = teamName;
+        teamEl.appendChild(teamTitle);
 
         // TEAM LOGOS
-        var teamALogo = data.response[14].teams.away.logo;
-        var teamBLogo = data.response[14].teams.home.logo;
+        var teamLogo = data.response.team.logo;
+        var logo = document.createElement("img");
+        logo.setAttribute("src", teamLogo);
+        logo.setAttribute("height", "120px");
+        logo.setAttribute("width", "200px");
+        logo.setAttribute("alt", "Team Logo");
+        document.getElementById("teamA").appendChild(logo);
 
-        var logoA = document.createElement("img");
-        logoA.setAttribute("src", teamALogo);
-        logoA.setAttribute("height", "120px");
-        logoA.setAttribute("width", "200px");
-        logoA.setAttribute("padding-top", "135px");
-        logoA.setAttribute("alt", "Team Logo");
-        document.getElementById("teamA").appendChild(logoA);
+        // TEAM STATS
 
-        var logoB = document.createElement("img");
-        logoB.setAttribute("src", teamBLogo);
-        logoB.setAttribute("height", "120");
-        logoB.setAttribute("width", "120");
-        logoB.setAttribute("alt", "Team Logo");
-        document.getElementById("teamB").appendChild(logoB);
+        // Team wins
+        var teamWins = data.response.games.wins.all.total;
+        var teamWinsEl = document.createElement('p');
+        teamWinsEl.textContent = "Wins: " + teamWins;
+        statsEl.appendChild(teamWinsEl);
+
+        // Team loses
+        var teamLoses = data.response.games.loses.all.total;
+        var teamLosesEl = document.createElement('p');
+        teamLosesEl.textContent = "Loses: " + teamLoses;
+        statsEl.appendChild(teamLosesEl);
+
+        // Team points for
+        var teamPointsFor = data.response.goals.for.average.all;
+        var teamPointsForEl = document.createElement('p');
+        teamPointsForEl.textContent = "Average Points (For): " + teamPointsFor;
+        statsEl.appendChild(teamPointsForEl);
+
+        // Team points against
+        var teamPointsAgainst = data.response.goals.against.average.all;
+        var teamPointsAgainstEl = document.createElement('p');
+        teamPointsAgainstEl.textContent = "Average Points (Againts): " + teamPointsAgainst;
+        statsEl.appendChild(teamPointsAgainstEl);
     }
   
     // GAME TIME
     function gameCountdown(data) {
 
         // Displays when the game will take place
-        var time = moment(data.response[14].date).format("dddd, MMMM Do h:mm a");
+        var time = moment(data.response.date).format("dddd, MMMM Do h:mm a");
         gameTimeEl.textContent = time;
 
         // Countdown from now till game
@@ -162,7 +144,7 @@ $(document).ready(function () {
             var logo = getLogo(teamCode);
             var teamId = teamIds[teamCode];
             var winLoss = getStats(teamId);
-            console.log(winLoss);
+            console.log(teamId);
 
         // build and append HTML for team card
     }
@@ -205,6 +187,3 @@ $(document).ready(function () {
             // This time, we do not end up here!
         }
     });
-
-    getGameData();
-})

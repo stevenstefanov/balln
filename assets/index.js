@@ -35,7 +35,7 @@ fetch("https://api-basketball.p.rapidapi.com/teams?league=12&season=2020-2021", 
 });
 
 function displayTeamData(data) {
-    for (var i = 0; i < data.response.length; i++) {
+    for (var i = 0; i < data.response.length-2; i++) {
         var teamName = data.response[i].name;
         console.log(teamName);
         console.log(data.response[i].id);
