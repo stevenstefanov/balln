@@ -130,3 +130,31 @@ $(document).ready(function () {
 
     getGameData();
 })
+
+
+var team = document.location.search.replace('?team=', ''); // los%20angles%20lakers
+var eventData = [];
+// loop
+var teams = eventData[i].name.split(' vs. '); // [ 'Los Angeles Lakers', 'Pheonix Suns' ]
+var team1 = teams[0] // LosAngeles Lakers -> losangeleslakers
+var team2 = teams[1] // Pheonix Suns -> pheonixsuns
+var teamIDs = {
+  losangeleslakers: 139,
+  atlantahawks: 142
+}
+function getStats(teamID) {
+  // fetch call form a team
+  // return win / loss as a string -> "W 24 / L 13"
+}
+function getLogo(team) {
+  // return our relative path
+  return  './assets/team-logos/' + team + '.svg';
+}
+function makeCard(team) {
+  var teamCode = team.lowerCase().replace(' ', ''); //LosAngeles Lakers -> losangeleslakers
+  var winLoss = getStats(teamIDs[ teamCode ]);
+  var logo = getLogo(teamCode);
+  // create HTML
+  // add classes and attributes
+  // append them to the DOM
+}
