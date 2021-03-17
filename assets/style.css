@@ -6,7 +6,7 @@ body {
     text-align: center;
     background-image: url("images/social_share_default.png");
     background-size: cover;
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat
 }
 #btn {
     background-color: lightgray;
@@ -17,7 +17,6 @@ body {
   
 
 }
-.secondsection {
 
 }
 .teams {
