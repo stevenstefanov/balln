@@ -92,16 +92,17 @@ $(document).ready(function () {
         }, 1000);
     };
 
-    /* Ticketmaster API*/
+/* Ticketmaster API*/
+var team = document.location.search.replace("?team=", '')
+
     $.ajax({
         type: "GET",
-        url: "https://app.ticketmaster.com/discovery/v2/events.json?keyword=nba&apikey=wkeUKU7nGwu8KaAr6CW0pqhy3LP5gh4f",
+        url: "https://app.ticketmaster.com/discovery/v2/events.json?keyword=' + team + '&apikey=wkeUKU7nGwu8KaAr6CW0pqhy3LP5gh4",
         async: true,
         dataType: "json",
         success: function (res) {
             console.log("**********",res);
             const eventData = res._embedded.events;
-            //var futureGames = JSON.parse('{ "name":"John", "age":30, "city":"New York"}');
 
             //initialize mark up string
             let nbaCardMarkUp = "";
@@ -120,7 +121,7 @@ $(document).ready(function () {
             };
 
             //nba card add the page
-            $("#map").html(nbaCardMarkUp);
+            $("#upcominggames").html(nbaCardMarkUp);
         },
         error: function (xhr, status, err) {
             // This time, we do not end up here!
