@@ -5,17 +5,50 @@ var countdownEl = document.querySelector("countdown");
 // var gameLocation = document.querySelector("");
 var gameInfo;
 
-var teamIds = { // eli's code
-    losangeleslakers: 139,
-    atlantahawks: 142
+// Object with all teams and their ids
+var teamIds = {
+    atlantahawks: 132,
+    bostonceltics: 133,
+    brooklynnets: 134,
+    charlottehornets: 135,
+    chicagobulls: 136,
+    clevelandcavaliers: 137,
+    dallasmavericks: 138,
+    denvernuggets: 139,
+    detroitpistons: 140,
+    goldenstatewarriors: 141,
+    houstonrockets: 142,
+    indianapacers: 143,
+    losangelesclippers: 144,
+    losangeleslakers: 145,
+    memphisgrizzlies: 146,
+    miamiheat: 147,
+    milwaukeebucks: 148,
+    minnesotatimberwolves: 149,
+    neworleanspelicans: 150,
+    newyorkknicks: 151,
+    oklahomacitythunder: 152,
+    orlandomagic: 153,
+    philadelphia76ers: 154,
+    phoenixsuns: 155,
+    portlandtrailblazers: 156,
+    sacramentokings: 157,
+    sanantoniospurs: 158,
+    torontoraptors: 159,
+    utahjazz: 160,
+    washingtonwizzards: 161,
+    teamlebron: 1412,
+    teamdurant: 2511
   }
 
 function getLogo(team) {
 // return our relative path
 return  './assets/team-logos/' + team + '.svg';
 }
+
+
 function getStats(teamID) {
-    fetch("https://api-basketball.p.rapidapi.com/statistics?league=12&season=2019-2020&team=133", {
+    fetch("https://api-basketball.p.rapidapi.com/statistics?league=12&season=2020-2021&team=" + teamID, {
 	    "method": "GET",
 	    "headers": {
             "x-rapidapi-key": "a02badb577msh53c62c24f7e4112p157b9bjsne248c865880a",
@@ -125,7 +158,7 @@ $(document).ready(function () {
     var team = document.location.search.replace("?team=", "");
 
     function getTeamInfo() {
-            var teamCode = team.toLowerCase().replace(' ', '');
+            var teamCode = team.toLowerCase().replace('%20', '');
             var logo = getLogo(teamCode);
             var teamId = teamIds[teamCode];
             var winLoss = getStats(teamId);
