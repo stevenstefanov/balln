@@ -5,10 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content = "width=device-width, initial-scale=1.0">
     <title>Game Locator</title>
-<!-- foundation-float.min.css: Compressed CSS with legacy Float Grid -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation-float.min.css" integrity="sha256-4ldVyEvC86/kae2IBWw+eJrTiwNEbUUTmN0zkP4luL4=" crossorigin="anonymous">
-
-<!-- foundation-prototype.min.css: Compressed CSS with prototyping classes -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation-prototype.min.css" integrity="sha256-BiKflOunI0SIxlTOOUCQ0HgwXrRrRwBkIYppEllPIok=" crossorigin="anonymous">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
@@ -16,11 +13,11 @@
 </head>
 <body>
     <header>
-        <div class="card" style="width: 900px; border-radius: 5px; background-color: #EAEAEA; padding: 10px;">
+        <div class="card" style="width: 900px; border-radius: 5px; background-color: #304adb; color: white; padding: 10px; margin: 10px;">
             <h1>Game Finder</h1> 
         </div>
         <div>
-            <div>Back to Search</div>
+            <button id=btn>Back to Search</button>
         </div>
     </header>
     <div class="card" style="width: 900px; height: 300px; border-radius: 5px; display: flex; flex-direction: row;">
@@ -44,7 +41,7 @@
     <div class="card" style="width: 900px; border-radius: 5px; background-color: #EAEAEA">
         <div>Upcoming Games</div>
         <div id="maps">
-            <!-- this is where nba cards will go -->
+        <!-- this is where nba cards will go -->
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

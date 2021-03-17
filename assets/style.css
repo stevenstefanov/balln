@@ -4,13 +4,19 @@ body {
     align-items: center;
     justify-content: flex-start;
     text-align: center;
-    
-   
+    background-image: url("images/social_share_default.png");
+    background-size: cover;
+    background-repeat: no-repeat
+}
+#btn {
+    background-color: lightgray;
+    color: black;
+    border-radius: 5px;
 }
 .card{
+  
 
 }
-.secondsection {
 
 }
 .teams {
@@ -34,6 +40,5 @@ body {
 }
 .stats {
    
-    
-    
+       
 }
