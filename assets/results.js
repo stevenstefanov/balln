@@ -34,12 +34,13 @@ var teamIds = {
     sanantoniospurs: 158,
     torontoraptors: 159,
     utahjazz: 160,
-    washingtonwizzards: 161
+    washingtonwizards: 161
   }
 
+// Function to pull locally saved team logos for second team in upcoming games
 function getLogo(team) {
-// return our relative path
-return  './assets/team-logos/' + team + '.svg';
+    // return our relative path
+    return  './assets/teamlogos/' + team + '.svg';
 }
 
 
@@ -56,7 +57,6 @@ function getStats(teamID) {
             response.json().then(function (data) {
                 console.log(data);
                 displayTeamData(data);
-                // gameCountdown(data);
             });
         }
     })
@@ -116,11 +116,11 @@ function getStats(teamID) {
     function gameCountdown(data) {
 
         // Displays when the game will take place
-        var time = moment(data.response.date).format("dddd, MMMM Do h:mm a");
-        gameTimeEl.textContent = time;
+        // var time = moment(data[0].dates.start.localDate).format("dddd, MMMM Do h:mm a");
+        // gameTimeEl.textContent = time;
 
         // Countdown from now till game
-        var countDownDate = new Date(data.response[14].date).getTime();
+        var countDownDate = new Date(data[0].dates.start.localDate).getTime();
 
         var x = setInterval(function() {
             var now = new Date().getTime();
@@ -138,15 +138,15 @@ function getStats(teamID) {
     };
 
     var team = document.location.search.replace("?team=", "");
-
+    
     function getTeamInfo() {
-            var teamCode = team.toLowerCase().replace('%20', '');
-            var logo = getLogo(teamCode);
-            var teamId = teamIds[teamCode];
-            var winLoss = getStats(teamId);
-            console.log(teamId);
-
-        // build and append HTML for team card
+        var teamCode = team.toLowerCase().replace('%20', '');
+        // For 3 word teams we need to repeat the replace function
+        teamCode = teamCode.replace('%20', '');
+        var logo = getLogo(teamCode);
+        var teamId = teamIds[teamCode];
+        var winLoss = getStats(teamId);
+        console.log(teamCode);
     }
 
     getTeamInfo();
@@ -164,6 +164,8 @@ function getStats(teamID) {
             //initialize mark up string
             let nbaCardMarkUp = "";
 
+            gameCountdown(eventData);
+
             //concat markup stringthrough a loop
             for (let i = 0; i < eventData.length; i++) {
                 if(i === 0) {
@@ -172,6 +174,8 @@ function getStats(teamID) {
                 nbaCardMarkUp += `
                     <div class="nba-card">
                         <h3 class="nba-title">${eventData[i].name}</h3>
+                        <h5>Time Until Game:</h5>
+                        <div id="countdown"></div>
                         <div class="nba-date-container">${eventData[i].dates.start.localDate} ${eventData[i].dates.start.localTime}</div>
                         <img class="nba-img" src="${eventData[i].images[0].url}"/>
                         <p class="nba-info">${eventData[i].info}</p>
