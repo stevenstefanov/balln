@@ -1,7 +1,12 @@
+var team = document.location.search.replace("?team=", "");
+
+if (!team) {
+    location.replace('./index.html');
+}
 var teamEl = document.querySelector("#teamA");
 var gameTimeEl = document.querySelector("#gametime");
 var countdownEl = document.querySelector("#countdown");
-var statsEl = document.querySelector("#stats")
+var statsEl = document.querySelector("#stats");
 
 // Object with all teams and their ids
 var teamIds = {
@@ -77,11 +82,11 @@ function getStats(teamID) {
         teamEl.appendChild(teamTitle);
 
         // TEAM LOGOS
-        var teamLogo = data.response.team.logo;
+        var teamLogo = getLogo( teamName.toLowerCase().replaceAll(' ', '') );
         var logo = document.createElement("img");
         logo.setAttribute("src", teamLogo);
-        logo.setAttribute("height", "120px");
-        logo.setAttribute("width", "200px");
+        logo.setAttribute("height", "auto");
+        logo.setAttribute("width", "300px");
         logo.setAttribute("alt", "Team Logo");
         document.getElementById("teamA").appendChild(logo);
 
@@ -136,13 +141,9 @@ function getStats(teamID) {
                 + minutes + "m " + seconds + "s ";
         }, 1000);
     };
-
-    var team = document.location.search.replace("?team=", "");
     
     function getTeamInfo() {
-        var teamCode = team.toLowerCase().replace('%20', '');
-        // For 3 word teams we need to repeat the replace function
-        teamCode = teamCode.replace('%20', '');
+        var teamCode = team.toLowerCase().replaceAll('%20', '');
         var logo = getLogo(teamCode);
         var teamId = teamIds[teamCode];
         var winLoss = getStats(teamId);
@@ -171,19 +172,31 @@ function getStats(teamID) {
                 if(i === 0) {
                     // code to handle timer
                 }
+
+                var teams = eventData[i].name.split(' vs. ');
+                for (var j = 0; j < teams.length; j++ ) {
+                    teams[j] = teams[j].toLowerCase().replaceAll(' ', '');
+                };
+                console.log( teams );
+                var team1Logo = getLogo(teams[0]);
+                var team2Logo = getLogo(teams[1]);
                 nbaCardMarkUp += `
                     <div class="nba-card">
                         <h3 class="nba-title">${eventData[i].name}</h3>
-                        <h5>Time Until Game:</h5>
+                        <h5>Next Game:</h5>
                         <div id="countdown"></div>
                         <div class="nba-date-container">${eventData[i].dates.start.localDate} ${eventData[i].dates.start.localTime}</div>
-                        <img class="nba-img" src="${eventData[i].images[0].url}"/>
+                        <div class="nba-img-container">
+                            <img class="nba-img" id="team-1-Logo" src="${team1Logo}"/>
+                            <span>VS.</span>
+                            <img class="nba-img" id="team-2-logo" src="${team2Logo}"/>
+                        </div>
+                        <img id="logo2"/>
                         <p class="nba-info">${eventData[i].info}</p>
                         <a href="${eventData[i].url}">Click Here to Visit Ticket Master</a>
                     </div>
                 `;
             };
-
             //nba card add the page
             $("#maps").html(nbaCardMarkUp);
         },

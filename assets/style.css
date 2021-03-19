@@ -59,3 +59,13 @@ h5 {
 #map {
 
 }
+
+.nba-img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nba-img {
+    width: 200px;
+    height: 200px;
+}
