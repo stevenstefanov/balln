@@ -2,16 +2,13 @@
 var searchFormEl = document.querySelector("#search-form");
 var teamEl = document.querySelector("#team-dropdown");
 
-// function to set localStorage
-function setLocalStorage () {
-  var userChoice = teamEl.value;
-
-  localStorage.setItem("userChoice",userChoice)
-  return userChoice;
+// Function to set localStorage
+document.getElementById("team-dropdown").onchange = function() {
+    localStorage["userChoice"] = document.getElementById("team-dropdown").value;
 }
-
-function retrieveLocalStorage() {
-    teamEl.value = localStorage.getItem("userChoice");
+window.onload= function(){
+    if(localStorage["userChoice"])
+        document.getElementById("team-dropdown").value = localStorage["userChoice"];
 }
 
 // Function to handly submit button
@@ -59,7 +56,6 @@ function displayTeamData(data) {
         var teamTitle = document.createElement('option');
         teamTitle.textContent = teamName;
         teamTitle.value = teamName.toLowerCase();
-        teamEl.appendChild(teamTitle);  
-        retrieveLocalStorage();
+        teamEl.appendChild(teamTitle);
     }   
 }
