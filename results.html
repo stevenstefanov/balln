@@ -17,7 +17,13 @@
             <h1>Game Finder</h1> 
         </div>
         <div>
-            <button id=btn>Back to Search</button>
+            <!--goes back to the page-->
+            <button onclick="goBack()" id=btn>Go Back</button>
+            <script>
+            function goBack() {
+            window.history.back();
+            }
+            </script>
         </div>
     </header>
     <div class="card row" style="width: 70%; height: 300px; border-radius: 5px; display: flex; flex-direction: row;">
