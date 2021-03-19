@@ -1,4 +1,5 @@
 var team = document.location.search.replace("?team=", "");
+var gameCardsEl = document.querySelector("#maps");
 
 if (!team) {
     location.replace('./index.html');
@@ -180,8 +181,8 @@ function getStats(teamID) {
                 console.log( teams );
                 var team1Logo = getLogo(teams[0]);
                 var team2Logo = getLogo(teams[1]);
-                nbaCardMarkUp += `
-                    <div class="nba-card">
+                gameCardsEl.innerHTML += `
+                <div class="card row nba-card" style="width: 70%; border-radius: 5px; background-color: #EAEAEA">
                         <h3 class="nba-title">${eventData[i].name}</h3>
                         <h5>Next Game:</h5>
                         <div id="countdown"></div>
@@ -193,12 +194,12 @@ function getStats(teamID) {
                         </div>
                         <img id="logo2"/>
                         <p class="nba-info">${eventData[i].info}</p>
-                        <a href="${eventData[i].url}">Click Here to Visit Ticket Master</a>
+                        <a href="${eventData[i].url}" target="_blank">Click Here to Visit Ticket Master</a>
                     </div>
                 `;
             };
             //nba card add the page
-            $("#maps").html(nbaCardMarkUp);
+            // $("#maps").append(nbaCardMarkUp);
         },
         error: function (xhr, status, err) {
             // This time, we do not end up here!

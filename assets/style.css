@@ -72,3 +72,12 @@ h5 {
     width: 200px;
     height: 200px;
 }
+
+.nba-card {
+    margin-bottom: 100px;
+    transition: 0.4s ease-in-out;
+}
+
+.nba-card:hover {
+    transform: translate(0, -20px);
+}
