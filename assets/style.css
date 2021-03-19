@@ -17,10 +17,6 @@ body {
     border-radius: 5px;
     font-weight: bold;
 }
-.card{
-  
-
-}
 h1 {
    font-weight: bolder;
 }
@@ -28,13 +24,19 @@ h5 {
     font-weight: bolder;
     background-color: rgb(32, 75, 214);
     color: white;
+    margin: 0;
 }
 #teamA {
-    display: flex;
-    flex-direction: column;
+    background-image: url("images/basket\ ball\ .jpg");
+    background-position: center;
+    color: white;
+    /* background-color: cyan; */
+    /* display: flex; */
+    /* flex-direction: column; */
     align-items: center;
+    width: 100%;
 }  
-#teamB {
+/* #teamB {
     display: flex;
     flex-direction: column;
      align-items: center;
@@ -46,14 +48,15 @@ h5 {
     margin-left: 40%;
     font-size: 20px;
 
-}
+} */
 #gametime {
     font-size: x-large;
     font-weight: bolder;
 
 }
 #stats {
-    
+    background-color:rgb(66, 140, 214);
+    font-weight: bold;
           
 }
 #map {
