@@ -10,6 +10,10 @@ function setLocalStorage () {
   return userChoice;
 }
 
+function retrieveLocalStorage() {
+    teamEl.value = localStorage.getItem("userChoice");
+}
+
 // Function to handly submit button
 function handleSearchFormSubmit(event) {
   event.preventDefault();
@@ -56,5 +60,6 @@ function displayTeamData(data) {
         teamTitle.textContent = teamName;
         teamTitle.value = teamName.toLowerCase();
         teamEl.appendChild(teamTitle);  
+        retrieveLocalStorage();
     }   
 }
