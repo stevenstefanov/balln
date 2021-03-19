@@ -30,39 +30,30 @@ h5 {
     background-image: url("images/basket\ ball\ .jpg");
     background-position: center;
     color: white;
-    /* background-color: cyan; */
-    /* display: flex; */
-    /* flex-direction: column; */
     align-items: center;
-    width: 100%;
+    width: 50%;
 }  
-/* #teamB {
-    display: flex;
-    flex-direction: column;
-     align-items: center;
-}
 #countdown {
     background-color: lightgrey;
     border-radius: 5px;
     width: fit-content;
     margin-left: 40%;
     font-size: 20px;
-
-} */
+} 
 #gametime {
     font-size: x-large;
     font-weight: bolder;
 
 }
 #stats {
-    background-color:rgb(66, 140, 214);
+    background-color: #214087;
     font-weight: bold;
-          
+    width: 50%;
+    font-weight: 50px;
+    color: wheat;
+    font-size: larger;
+    margin-left: 10px;
 }
-#map {
-
-}
-
 .nba-img-container {
     display: flex;
     align-items: center;
