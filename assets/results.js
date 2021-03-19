@@ -174,16 +174,16 @@ function getStats(teamID) {
                 nbaCardMarkUp += `
                     <div class="nba-card">
                         <h3 class="nba-title">${eventData[i].name}</h3>
-                        <h5>Time Until Game:</h5>
+                        <h5>Next Game:</h5>
                         <div id="countdown"></div>
                         <div class="nba-date-container">${eventData[i].dates.start.localDate} ${eventData[i].dates.start.localTime}</div>
                         <img class="nba-img" src="${eventData[i].images[0].url}"/>
+                        <img id="logo2"/>
                         <p class="nba-info">${eventData[i].info}</p>
                         <a href="${eventData[i].url}">Click Here to Visit Ticket Master</a>
                     </div>
                 `;
             };
-
             //nba card add the page
             $("#maps").html(nbaCardMarkUp);
         },
