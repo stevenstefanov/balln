@@ -9,24 +9,22 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation-prototype.min.css" integrity="sha256-BiKflOunI0SIxlTOOUCQ0HgwXrRrRwBkIYppEllPIok=" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap">
-    <link rel="stylesheet" type="text/css" href="assets/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/style-index.css">
 </head>
-<body>
-    <div class="card row" style="width: 70%; border-radius: 5px; background-color: rgb(45, 68, 170); color: white; font-weight: bolder;">
+<body class="body">
+    <div class="card row" style="width: 40%; border-radius: 5px; background-color: rgb(45, 68, 170); color: white; font-weight: bolder; margin: 10px;">
         <!--one more wrapper-->
         <div class="main">
           <!-- Title-->
-          <h1 class="headername">Game Locator Search Engine</h1>
+          <img class="ballin-logo" src="assets/images/nbaLogo.png">
           <!-- form-->
-            <form id="search-form" class="form">
-
-              <!--drop down-->
-              <select id="team-dropdown" class="form-input">
-                <option value="">Choose a Team</option>
-              </select>
-
-              <input type="submit"/>
-            </form>
+          <form id="search-form" class="form">
+            <!--drop down-->
+            <select class="dropdown" id="team-dropdown">
+              <option value="">Choose a Team</option>
+            </select>
+            <input class="button large" type="submit">
+          </form>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
