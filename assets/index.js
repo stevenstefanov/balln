@@ -2,6 +2,14 @@
 var searchFormEl = document.querySelector("#search-form");
 var teamEl = document.querySelector("#team-dropdown");
 
+// function to set localStorage
+function setLocalStorage () {
+  var userChoice = teamEl.value;
+
+  localStorage.setItem("userChoice",userChoice)
+  return userChoice;
+}
+
 // Function to handly submit button
 function handleSearchFormSubmit(event) {
   event.preventDefault();
@@ -12,7 +20,10 @@ function handleSearchFormSubmit(event) {
   }
   var queryString = './results.html?team=' + teamsDropdownVal;
   location.assign(queryString);
+  setLocalStorage();
 }
+
+
 
 searchFormEl.addEventListener('submit', handleSearchFormSubmit);
 

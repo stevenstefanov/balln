@@ -72,3 +72,37 @@ h5 {
 .nba-card:hover {
     transform: translate(0, -20px);
 }
+
+/*///index classes///*/
+
+.body-index {
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    flex-direction: column;
+}
+
+.ballin-logo {
+    margin: 10px;
+}
+
+.team-dropdown {
+    width:35%;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.search-container {
+
+}
