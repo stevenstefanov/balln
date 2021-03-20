@@ -6,7 +6,7 @@ var gameTimeEl = document.querySelector("#gametime");
 var countdownEl = document.querySelector("#countdown");
 var statsEl = document.querySelector("#stats");
 
-// If no team is selected accidentally, page send user back to index.html
+// If no team is selected accidentally, page sends user back to index.html
 if (!team) {
     location.replace("./index.html");
 }
