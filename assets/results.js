@@ -92,7 +92,7 @@ function getStats(teamID) {
         var logo = document.createElement("img");
         logo.setAttribute("src", teamLogo);
         logo.setAttribute("height", "100%");
-        logo.setAttribute("width", "350px");
+        logo.setAttribute("width", "450px");
         logo.setAttribute("alt", "Team Logo");
         document.getElementById("selectedTeam").appendChild(logo);
 
