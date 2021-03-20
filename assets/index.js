@@ -3,10 +3,12 @@ var searchFormEl = document.querySelector("#search-form");
 var teamEl = document.querySelector("#team-dropdown");
 
 // Function to set localStorage
-function setLocalStorage () {
-  var userChoice = teamEl.value;
-  localStorage.setItem("userChoice",userChoice)
-  return userChoice;
+document.getElementById("team-dropdown").onchange = function() {
+    localStorage["userChoice"] = document.getElementById("team-dropdown").value;
+}
+window.onload= function(){
+    if(localStorage["userChoice"])
+    document.getElementById("team-dropdown").value = localStorage["userChoice"];
 }
 
 // Function to handle submit button
