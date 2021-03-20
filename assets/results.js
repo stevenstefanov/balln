@@ -49,7 +49,7 @@ var teamIds = {
     washingtonwizards: 161
 }
 
-// Function to pull locally saved team logos
+// Function to pull locally saved team logos. Must add personal API key from Rapid API
 function getLogo(team) {
     return  "./assets/teamlogos/" + team + ".svg";
 }
@@ -58,7 +58,7 @@ function getStats(teamID) {
     fetch("https://api-basketball.p.rapidapi.com/statistics?league=12&season=2020-2021&team=" + teamID, {
 	    "method": "GET",
 	    "headers": {
-            "x-rapidapi-key": "a02badb577msh53c62c24f7e4112p157b9bjsne248c865880a",
+            "x-rapidapi-key": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             "x-rapidapi-host": "api-basketball.p.rapidapi.com"
         }
     })
@@ -117,10 +117,6 @@ function getStats(teamID) {
   
     // GAME TIME
     function gameCountdown(data) {
-
-        // Displays when the game will take place
-        // var time = moment(data[0].dates.start.localDate).format("dddd, MMMM Do h:mm a");
-        // gameTimeEl.textContent = time;
 
         // Countdown from now till game
         var countDownDate = new Date(data[0].dates.start.localDate).getTime();

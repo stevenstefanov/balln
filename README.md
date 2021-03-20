@@ -12,6 +12,12 @@ The app will perfom the following logic:
 * Once the user selects their team, the user will click on the Submit button.
 * Upon hitting Submit, the app will store user selection in localStorage object and load a page displaying information about their team's stats, future dated games with ticketmaster link information.
 
+## Basketball API Integration Steps
+
+To successfully use application and pull API information, user must register at https://rapidapi.com/api-sports/api/api-basketball and obtain a personal API key. Insert the personal API key in these locations:
+* index.js - line 35
+* results.js - line 61
+
 ## Preview of App
 * This is how the app looks
 

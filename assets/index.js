@@ -28,11 +28,11 @@ function handleSearchFormSubmit(event) {
 
 searchFormEl.addEventListener("submit", handleSearchFormSubmit);
 
-// Fetch that gets 2020-2021 season team information
+// Fetch that gets 2020-2021 season team information. Must add personal API key from Rapid API
 fetch("https://api-basketball.p.rapidapi.com/teams?league=12&season=2020-2021", {
   "method": "GET",
 	"headers": {
-		"x-rapidapi-key": "a02badb577msh53c62c24f7e4112p157b9bjsne248c865880a",
+		"x-rapidapi-key": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
 		"x-rapidapi-host": "api-basketball.p.rapidapi.com"
 	}
 })
