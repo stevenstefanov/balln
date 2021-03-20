@@ -18,7 +18,7 @@ body {
     background-position: center;
 }
 
-header{
+header {
     width: var(--global-section-width);
 }
 
@@ -52,6 +52,7 @@ h5 {
 
 
 }
+
 /*///NBA API fetched card classes///*/
 .section-card {
     display:flex; 
@@ -150,6 +151,7 @@ h5 {
     align-items: center;
     justify-content: center;
 }
+
 .nba-img {
     width: 70%;
     height: auto;
@@ -187,8 +189,6 @@ h5 {
     font-weight: bolder;
 
 }
-
-
 
 /*///mobile media queries///*/
 
