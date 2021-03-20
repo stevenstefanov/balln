@@ -8,28 +8,29 @@ document.getElementById("team-dropdown").onchange = function() {
 }
 window.onload= function(){
     if(localStorage["userChoice"])
-        document.getElementById("team-dropdown").value = localStorage["userChoice"];
+    document.getElementById("team-dropdown").value = localStorage["userChoice"];
 }
 
-// Function to handly submit button
+// Function to handle submit button
 function handleSearchFormSubmit(event) {
   event.preventDefault();
   var teamsDropdownVal = teamEl.value;
+
   if (!teamsDropdownVal) {
-    console.error('You need a search input value!');
+    console.error("You need a search input value!");
     return;
   }
-  var queryString = './results.html?team=' + teamsDropdownVal;
+
+  var queryString = "./results.html?team=" + teamsDropdownVal;
   location.assign(queryString);
   setLocalStorage();
 }
 
+searchFormEl.addEventListener("submit", handleSearchFormSubmit);
 
-
-searchFormEl.addEventListener('submit', handleSearchFormSubmit);
-
+// Fetch that gets 2020-2021 season team information
 fetch("https://api-basketball.p.rapidapi.com/teams?league=12&season=2020-2021", {
-	"method": "GET",
+  "method": "GET",
 	"headers": {
 		"x-rapidapi-key": "a02badb577msh53c62c24f7e4112p157b9bjsne248c865880a",
 		"x-rapidapi-host": "api-basketball.p.rapidapi.com"
@@ -37,25 +38,25 @@ fetch("https://api-basketball.p.rapidapi.com/teams?league=12&season=2020-2021", 
 })
 .then(response => {
 	if (response.ok) {
-        response.json().then(function (data) {
-            console.log(data);
-            displayTeamData(data);
-        });
-    }
+    response.json().then(function(data) {
+      console.log(data);
+      displayTeamData(data);
+    });
+  }
 })
 .catch(err => {
 	console.error(err);
 });
 
-// For loop which populates team names in drop down menu
+// Function with for loop which populates team names in drop down menu
 function displayTeamData(data) {
-    for (var i = 0; i < data.response.length-2; i++) {
-        var teamName = data.response[i].name;
-        console.log(teamName);
-        console.log(data.response[i].id);
-        var teamTitle = document.createElement('option');
-        teamTitle.textContent = teamName;
-        teamTitle.value = teamName.toLowerCase();
-        teamEl.appendChild(teamTitle);
-    }   
+  for (var i = 0; i < data.response.length-2; i++) {
+    var teamName = data.response[i].name;
+    console.log(teamName);
+    console.log(data.response[i].id);
+    var teamTitle = document.createElement("option");
+    teamTitle.textContent = teamName;
+    teamTitle.value = teamName.toLowerCase();
+    teamEl.appendChild(teamTitle);  
+  }   
 }
