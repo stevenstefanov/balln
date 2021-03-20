@@ -5,6 +5,10 @@ var teamEl = document.querySelector("#selectedTeam");
 var gameTimeEl = document.querySelector("#gametime");
 var countdownEl = document.querySelector("#countdown");
 var statsEl = document.querySelector("#stats");
+var teamWinsEl = document.querySelector("#teamWins");
+var teamLossesEl = document.querySelector("#teamLosses");
+var teamPointsForEl = document.querySelector("#teamPointsFor");
+var teamPointsAgainstEl = document.querySelector("#teamPointsAgainst");
 
 // If no team is selected accidentally, page sends user back to index.html
 if (!team) {
@@ -71,53 +75,78 @@ function getStats(teamID) {
     });
 }
 
-// Function to display team data - name, wins, loses
-function displayTeamData(data) {
+    // Function displays team data - name, logo, etc
+    function displayTeamData(data) {
 
-    // TEAM NAMES
-    var teamName = data.response.team.name;
+        // TEAM NAMES
+        var teamName = data.response.team.name;
 
-    // Creates span for titles with team names, then appends them to teamEl
-    var teamTitle = document.createElement("h2");
-    teamTitle.textContent = teamName;
-    teamTitle.setAttribute("style", "background-color: #000; font-family: 'Anton', sans-serif; font-size: 25px;");
-    teamEl.appendChild(teamTitle);
+        // Creates span for titles with team names, the append to HTML EL
+        var teamTitle = document.createElement('h2');
+        teamTitle.textContent = teamName;
+        teamTitle.setAttribute("style", "background-color: #000; font-family: 'Anton', sans-serif; font-size: var(--title-font);");
+        teamEl.appendChild(teamTitle);
 
-    // TEAM LOGOS
-    var teamLogo = getLogo(teamName.toLowerCase().replaceAll(" ", ""));
-    var logo = document.createElement("img");
-    logo.setAttribute("src", teamLogo);
-    logo.setAttribute("height", "auto");
-    logo.setAttribute("width", "350px");
-    logo.setAttribute("alt", "Team Logo");
-    document.getElementById("selectedTeam").appendChild(logo);
+        // TEAM LOGOS
+        var teamLogo = getLogo( teamName.toLowerCase().replaceAll(' ', '') );
+        var logo = document.createElement("img");
+        logo.setAttribute("src", teamLogo);
+        logo.setAttribute("height", "100%");
+        logo.setAttribute("width", "350px");
+        logo.setAttribute("alt", "Team Logo");
+        document.getElementById("selectedTeam").appendChild(logo);
 
-    // TEAM STATS
+        // TEAM STATS TABLE
 
-    // Team wins
-    var teamWins = data.response.games.wins.all.total;
-    var teamWinsEl = document.createElement("p");
-    teamWinsEl.textContent = "Wins: " + teamWins;
-    statsEl.appendChild(teamWinsEl);
+        // Team wins
+        var teamWins = data.response.games.wins.all.total;
+        teamWinsEl.textContent = teamWins;
 
-    // Team loses
-    var teamLoses = data.response.games.loses.all.total;
-    var teamLosesEl = document.createElement("p");
-    teamLosesEl.textContent = "Loses: " + teamLoses;
-    statsEl.appendChild(teamLosesEl);
+        // Team losses
+        var teamLosses = data.response.games.loses.all.total;
+        teamLossesEl.textContent = teamLosses;
 
-    // Team points for
-    var teamPointsFor = data.response.goals.for.average.all;
-    var teamPointsForEl = document.createElement("p");
-    teamPointsForEl.textContent = "Average Points (For): " + teamPointsFor;
-    statsEl.appendChild(teamPointsForEl);
+        // Team points for
+        var teamPointsFor = data.response.goals.for.average.all;
+        teamPointsForEl.textContent = teamPointsFor;
 
-    // Team points against
-    var teamPointsAgainst = data.response.goals.against.average.all;
-    var teamPointsAgainstEl = document.createElement("p");
-    teamPointsAgainstEl.textContent = "Average Points (Againts): " + teamPointsAgainst;
-    statsEl.appendChild(teamPointsAgainstEl);
-}
+        // Team points against
+        var teamPointsAgainst = data.response.goals.against.average.all;
+        teamPointsAgainstEl.textContent = teamPointsAgainst;
+    }
+  
+    // GAME TIME
+    function gameCountdown(data) {
+
+        // Displays when the game will take place
+        // var time = moment(data[0].dates.start.localDate).format("dddd, MMMM Do h:mm a");
+        // gameTimeEl.textContent = time;
+
+        // Countdown from now till game
+        var countDownDate = new Date(data[0].dates.start.localDate).getTime();
+
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+                + minutes + "m " + seconds + "s ";
+        }, 1000);
+    };
+    
+    function getTeamInfo() {
+        var teamCode = team.toLowerCase().replaceAll('%20', '');
+        var logo = getLogo(teamCode);
+        var teamId = teamIds[teamCode];
+        var winLoss = getStats(teamId);
+        console.log(teamCode);
+    }
 
 // GAME TIME
 function gameCountdown(data) {

@@ -1,6 +1,8 @@
 :root{
     --global-section-width: 60%;
-    --card-title-size: 50px;
+    --title-font: 50px;
+    --stats-font: 35px;
+    --text-content-font: 20px;
 }
 
 body { 
@@ -24,7 +26,7 @@ h1 {
    font-weight: bolder;
 }
 h5 {
-    font-family: 'Anton', sans-serif;
+    font-family: 'Staatliches', cursive;
     color: white;
     margin: 0;
     font-size: 40px;
@@ -44,10 +46,9 @@ h5 {
     margin-top: 10px;
     background-color: #000;
     color: #FFF;
-    font-family: 'Anton', sans-serif;
-    font-size: 35px;
+    font-family: 'Staatliches', cursive;
+    font-size: var(--title-font);
     width: var(--global-section-width);
-    height: 50px;
 
 
 }
@@ -72,19 +73,49 @@ h5 {
     color: white; 
     width:var(--global-section-width);
     box-shadow: 3px 3px 20px 5px #000;
-    height: 400px;
+    height: auto;
 }
+
+/*/ stats-table classes /*/
 
 #selectedTeam {
     background-color: #f2f2f2;
-    background-position: center;
-    color: white;
     align-items: center;
     width: 50%;
-    margin: 10px;
+    height: 100%;
+    margin: 5px;
 }  
 
+.teamStatsTable {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    flex-direction: column; 
+    padding:10px;
+    width: 50%;
+    height: 100%;
+    margin: 5px;
+}
+
+.statsKeyTitle {
+    font-family: 'Staatliches', cursive; 
+    color: #A2A2A2;
+    font-size: var(--stats-font);
+    width: 50%;
+}
+
+.statsKeyValue {
+    font-family: 'Staatliches', cursive; 
+    color: #C9072A;
+    font-size: var(--stats-font);
+    width: 50%;
+}
+
+
+
 /*///ticketmaster fetched card classes///*/
+
+/*///section wrapper///*/
 #futuregames {
     display:flex;
     justify-content: center;
@@ -96,24 +127,22 @@ h5 {
 .nba-title {
     background-color: #000;
     color: #FFF;
-    font-family: 'Anton', sans-serif;
-    font-size: var(--card-title-size);
-    width: var(--global-section-width);
-    height: auto;
+    font-family: 'Staatliches', cursive;
+    font-size: var(--title-font);
     width: 100%;
+
 }
 
 #countdown {
-    font-family: 'Anton', sans-serif;
+    font-family: 'Staatliches', cursive;
     background-color:crimson;
     color: #FFF;
-    margin-left: 40%;
-    font-size: 70px;
+    font-size: var(--title-font);
 } 
 
 .nba-date-container {
-    font-family: 'Anton', sans-serif;
-    background-color: #;
+    font-family: 'Staatliches', cursive;
+    font-size: var(--title-font);
     width: fit-content;
 }
 
@@ -130,6 +159,9 @@ h5 {
 
 .nba-info {
     text-align: justify;
+    font-family: 'Roboto', sans-serif;
+    font-size:var(--text-content-font);
+
 
 }
 
@@ -157,41 +189,63 @@ h5 {
     font-weight: bolder;
 
 }
-#stats {
-    background-color: #214087;
-    font-weight: bold;
-    width: 50%;
-    font-weight: 50px;
-    color: wheat;
-    font-size: larger;
-    margin: 10px;
-}
 
-/*///index classes///*/
-.body-index {
-    display: flex;
-    justify-content: center;
-    align-items: center;   
-    flex-direction: column;
-}
+/*///mobile media queries///*/
 
-.ballin-logo {
-    margin: 10px;
-}
 
-.team-dropdown {
-    width:35%;
-}
+@media only screen and (max-width: 400px) {
+    :root{
+        --global-section-width: 95%;
+        --title-font: 30px;
+        --stats-font: 15px;
+        --text-content-font: 10px;
+    }
 
-.main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
+    .section-teamStats {
+        display:flex;
+        flex-wrap: wrap;
+        height: auto;
+    }
 
-.form {
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-}
+    #selectedTeam {
+        width: 95%;
+    }
+
+    .teamStatsTable {
+        width: 100%;
+        
+    }
+    .nba-img {
+        width: 50%;
+        height: auto;
+    }
+  }
+
+  /*///tablet media queries///*/
+
+  @media only screen and (max-width: 768px) {
+    :root{
+        --global-section-width: 80%;
+        --title-font: 40px;
+        --stats-font: 30px;
+        --text-content-font: 15px;
+    }
+
+    .section-teamStats {
+        display:flex;
+        height: auto;
+    }
+
+    #selectedTeam {
+        width: 95%;
+    }
+
+    .teamStatsTable {
+        width: 100%;
+        
+    }
+    .nba-img {
+        width: 60%;
+        height: auto;
+    }
+  }

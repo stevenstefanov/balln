@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation-prototype.min.css" integrity="sha256-BiKflOunI0SIxlTOOUCQ0HgwXrRrRwBkIYppEllPIok=" crossorigin="anonymous">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet"> <!---font-family: 'Anton', sans-serif;-->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet"> <!---font-family: 'Roboto', sans-serif;-->
+<link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet"> <!---font-family: 'Staatliches', cursive;-->
 <link rel="stylesheet" href="assets/style.css"  type="text/css">
 </head>
 <body>    
@@ -26,14 +28,32 @@
     </div>
     <div class="card section-teamStats">
         <div id="selectedTeam"></div>
-        <div id="stats">
-            <div class="nba-title">Stats</div>
+        <div class="teamStatsTable">
+            <div class="nba-title">TEAM STATS</div>
+            <table>
+                <tr>
+                    <td class="statsKeyTitle">WINS</td>
+                    <td class="statsKeyValue" id="teamWins"></td>
+                </tr>
+                <tr>
+                    <td class="statsKeyTitle">LOSSES</td>
+                    <td class="statsKeyValue" id="teamLosses"></td>
+                </tr>
+                <tr>
+                    <td class="statsKeyTitle">AVG PTS(FOR)</td>
+                    <td class="statsKeyValue" id="teamPointsFor"></td>
+                </tr>
+                <tr>
+                    <td class="statsKeyTitle">AVG PTS(AGA)</td>
+                    <td class="statsKeyValue" id="teamPointsAgainst"></td>
+                </tr>
+            </table>
+        </div>
         </div>
     </div>
     <div class="section-title">UPCOMING GAMES</div>
     <div id="futuregames">
     </div>
-    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="assets/results.js"></script>
