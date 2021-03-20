@@ -1,10 +1,10 @@
 var team = document.location.search.replace("?team=", "");
-var gameCardsEl = document.querySelector("#maps");
+var gameCardsEl = document.querySelector("#futuregames");
 
 if (!team) {
     location.replace('./index.html');
 }
-var teamEl = document.querySelector("#teamA");
+var teamEl = document.querySelector("#selectedTeam");
 var gameTimeEl = document.querySelector("#gametime");
 var countdownEl = document.querySelector("#countdown");
 var statsEl = document.querySelector("#stats");
@@ -80,6 +80,7 @@ function getStats(teamID) {
         // Creates span for titles with team names, the append to HTML EL
         var teamTitle = document.createElement('h2');
         teamTitle.textContent = teamName;
+        teamTitle.setAttribute("style", "background-color: #000; font-family: 'Anton', sans-serif; font-size: 25px;");
         teamEl.appendChild(teamTitle);
 
         // TEAM LOGOS
@@ -87,9 +88,9 @@ function getStats(teamID) {
         var logo = document.createElement("img");
         logo.setAttribute("src", teamLogo);
         logo.setAttribute("height", "auto");
-        logo.setAttribute("width", "300px");
+        logo.setAttribute("width", "350px");
         logo.setAttribute("alt", "Team Logo");
-        document.getElementById("teamA").appendChild(logo);
+        document.getElementById("selectedTeam").appendChild(logo);
 
         // TEAM STATS
 
@@ -182,7 +183,7 @@ function getStats(teamID) {
                 var team1Logo = getLogo(teams[0]);
                 var team2Logo = getLogo(teams[1]);
                 gameCardsEl.innerHTML += `
-                <div class="card row nba-card" style="width: 70%; border-radius: 5px; background-color: #EAEAEA">
+                <div class="card row nba-card">
                         <h3 class="nba-title">${eventData[i].name}</h3>
                         <h5>Next Game:</h5>
                         <div id="countdown"></div>
@@ -194,12 +195,12 @@ function getStats(teamID) {
                         </div>
                         <img id="logo2"/>
                         <p class="nba-info">${eventData[i].info}</p>
-                        <a href="${eventData[i].url}" target="_blank">Click Here to Visit Ticket Master</a>
+                        <a class="button alert" href="${eventData[i].url}" target="_blank">Click here to visit Ticket Master</a>
                     </div>
                 `;
             };
             //nba card add the page
-            // $("#maps").append(nbaCardMarkUp);
+            // $("#futuregames").append(nbaCardMarkUp);
         },
         error: function (xhr, status, err) {
             // This time, we do not end up here!
