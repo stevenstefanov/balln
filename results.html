@@ -8,31 +8,36 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation-float.min.css" integrity="sha256-4ldVyEvC86/kae2IBWw+eJrTiwNEbUUTmN0zkP4luL4=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation-prototype.min.css" integrity="sha256-BiKflOunI0SIxlTOOUCQ0HgwXrRrRwBkIYppEllPIok=" crossorigin="anonymous">
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet"> <!---font-family: 'Anton', sans-serif;-->
+
 <link rel="stylesheet" href="assets/style.css"  type="text/css">
 </head>
-<body>
-    <header>
-        <div class="card" style="width: 100%; border-radius: 5px; background-color: #304adb; color: white; padding: 10px;">
-            <h1>Game Finder</h1> 
-        </div>
-        <div>
-            <!--goes back to the page-->
-            <button onclick="goBack()" id=btn>Go Back</button>
-            <script>
-            function goBack() {
-            window.history.back();
-            }
-            </script>
-        </div>
-    </header>
-    <div class="card row" style="width: 70%; height: 300px; border-radius: 5px; display: flex; flex-direction: row; padding: 10px 10px;">
-        <div id="teamA"></div>
+<body>    
+    <div class="card section-logo">
+        <img src="assets/images/nbaLogo.png">
+    </div>
+    <div>
+        <!--goes back to the page-->
+        <button onclick="goBack()" class="button large">Go Back</button>
+        <script>
+        function goBack() {
+        window.history.back();
+        }
+        </script>
+    </div>
+    <div class="card section-teamStats">
+        <div id="selectedTeam"></div>
         <div id="stats">
-            <h5>Stats</h5>
+            <div class="nba-title">Stats</div>
         </div>
     </div>
     <div id="maps"><h5>Upcoming Games</h5></div>
+    <div class="section-title">UPCOMING GAMES</div>
+    <div id="futuregames">
+    </div>
+    
+
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="assets/results.js"></script>
