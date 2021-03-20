@@ -1,3 +1,8 @@
+:root{
+    --global-section-width: 60%;
+    --card-title-size: 50px;
+}
+
 body { 
     display: flex;
     flex-direction: column;
@@ -9,37 +14,142 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    
 }
-#btn {
-    background-color: lightgray;
-    color: black;
-    border-radius: 5px;
-    font-weight: bold;
+
+header{
+    width: var(--global-section-width);
 }
+
 h1 {
    font-weight: bolder;
 }
 h5 {
-    font-weight: bolder;
-    background-color: rgb(32, 75, 214);
+    font-family: 'Anton', sans-serif;
     color: white;
     margin: 0;
+    font-size: 40px;
 }
-#teamA {
-    background-image: url("images/basket\ ball\ .jpg");
+
+.section-logo {
+    display:flex;
+    align-items: center;
+    background-image: linear-gradient(#FFF, #FFF, #aaaaaa);
+    width: var(--global-section-width);
+    padding:10px;
+    margin-top:10px;
+}
+
+.section-title {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background-color: #000;
+    color: #FFF;
+    font-family: 'Anton', sans-serif;
+    font-size: 35px;
+    width: var(--global-section-width);
+    height: 50px;
+
+
+}
+/*///NBA API fetched card classes///*/
+.section-card {
+    display:flex; 
+    justify-content: center; 
+    align-items: center; 
+    color: black; 
+    padding: 10px;
+    width:var(--global-section-width);
+    box-shadow: 3px 3px 20px 5px #000;
+}
+
+.section-teamStats {
+    display:flex;
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: row;
+    background-color: #3b3b3b;
+    color: white; 
+    width:var(--global-section-width);
+    box-shadow: 3px 3px 20px 5px #000;
+    height: 400px;
+}
+
+#selectedTeam {
+    background-color: #f2f2f2;
     background-position: center;
     color: white;
     align-items: center;
     width: 50%;
+    margin: 10px;
 }  
+
+/*///ticketmaster fetched card classes///*/
+#futuregames {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--global-section-width);
+    flex-direction: column;
+}
+
+.nba-title {
+    background-color: #000;
+    color: #FFF;
+    font-family: 'Anton', sans-serif;
+    font-size: var(--card-title-size);
+    width: var(--global-section-width);
+    height: auto;
+    width: 100%;
+}
+
 #countdown {
-    background-color: lightgrey;
-    border-radius: 5px;
-    width: fit-content;
+    font-family: 'Anton', sans-serif;
+    background-color:crimson;
+    color: #FFF;
     margin-left: 40%;
-    font-size: 20px;
+    font-size: 70px;
 } 
+
+.nba-date-container {
+    font-family: 'Anton', sans-serif;
+    background-color: #;
+    width: fit-content;
+}
+
+.nba-img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nba-img {
+    width: 70%;
+    height: auto;
+}
+
+.nba-info {
+    text-align: justify;
+
+}
+
+.nba-card {
+    display:flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column;
+    background-color: #3b3b3b;
+    color: white; 
+    padding: 10px;
+    width:100%;
+    box-shadow: 3px 3px 20px 5px #000;
+    margin-bottom: 100px;
+    transition: 0.4s ease-in-out;
+}
+
+.nba-card:hover {
+    transform: translate(0, -20px);
+}
+
+
 #gametime {
     font-size: x-large;
     font-weight: bolder;
@@ -52,26 +162,9 @@ h5 {
     font-weight: 50px;
     color: wheat;
     font-size: larger;
-    margin-left: 10px;
-}
-.nba-img-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.nba-img {
-    width: 200px;
-    height: 200px;
+    margin: 10px;
 }
 
-.nba-card {
-    margin-bottom: 100px;
-    transition: 0.4s ease-in-out;
-}
-
-.nba-card:hover {
-    transform: translate(0, -20px);
-}
 
 /*///index classes///*/
 
@@ -101,8 +194,4 @@ h5 {
     display: flex;
     flex-direction: column;
     width: 70%;
-}
-
-.search-container {
-
 }

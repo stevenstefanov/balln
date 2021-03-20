@@ -17,6 +17,6 @@ The app will perfom the following logic:
 
 ![Screenshot](./assets/images/userQuery.JPG)
 
-![Screenshot](./assets/images/index.JPG)
-# Lincense
+![Screenshot](./assets/images/index.jpg)
+# License
 * MIT
