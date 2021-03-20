@@ -11,6 +11,22 @@ body {
     background-position: center;
     
 }
+.enter {
+    background-color: lightgray;
+    border-radius: 10px 0 10px 0;
+    width: 20%;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    background-color: rgb(32, 75, 214);
+}
+.enter:hover {
+    transform: translate(0, -5px);
+    box-shadow: 10px 10px 5px white;
+    width: 20%;
+}
+
 #btn {
     background-color: lightgray;
     color: black;
@@ -23,8 +39,8 @@ h1 {
 h5 {
     font-weight: bolder;
     background-color: rgb(32, 75, 214);
-    color: white;
-    margin: 0;
+    color: white; 
+    
 }
 #teamA {
     background-image: url("images/basket\ ball\ .jpg");
@@ -71,4 +87,11 @@ h5 {
 
 .nba-card:hover {
     transform: translate(0, -20px);
+}
+#map,h5 {
+    
+    display: flex;
+    flex-shrink: initial;
+    justify-content: center;
+    align-items: center;
 }
