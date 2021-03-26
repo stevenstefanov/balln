@@ -32,7 +32,7 @@ searchFormEl.addEventListener("submit", handleSearchFormSubmit);
 fetch("https://api-basketball.p.rapidapi.com/teams?league=12&season=2020-2021", {
   "method": "GET",
 	"headers": {
-		"x-rapidapi-key": "a02badb577msh53c62c24f7e4112p157b9bjsne248c865880a",
+		"x-rapidapi-key": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
 		"x-rapidapi-host": "api-basketball.p.rapidapi.com"
 	}
 })

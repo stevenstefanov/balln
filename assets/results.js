@@ -58,7 +58,7 @@ function getStats(teamID) {
     fetch("https://api-basketball.p.rapidapi.com/statistics?league=12&season=2020-2021&team=" + teamID, {
 	    "method": "GET",
 	    "headers": {
-            "x-rapidapi-key": "a02badb577msh53c62c24f7e4112p157b9bjsne248c865880a",
+            "x-rapidapi-key": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             "x-rapidapi-host": "api-basketball.p.rapidapi.com"
         }
     })
@@ -107,20 +107,16 @@ function getStats(teamID) {
         teamLossesEl.textContent = teamLosses;
 
         // Team points for
-        var teamPointsFor = data.response.goals.for.average.all;
+        var teamPointsFor = data.response.points.for.average.all;
         teamPointsForEl.textContent = teamPointsFor;
 
         // Team points against
-        var teamPointsAgainst = data.response.goals.against.average.all;
+        var teamPointsAgainst = data.response.points.against.average.all;
         teamPointsAgainstEl.textContent = teamPointsAgainst;
     }
   
     // GAME TIME
     function gameCountdown(data) {
-
-        // Displays when the game will take place
-        // var time = moment(data[0].dates.start.localDate).format("dddd, MMMM Do h:mm a");
-        // gameTimeEl.textContent = time;
 
         // Countdown from now till game
         var countDownDate = new Date(data[0].dates.start.localDate).getTime();
