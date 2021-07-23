@@ -58,14 +58,13 @@ function getStats(teamID) {
     fetch("https://api-basketball.p.rapidapi.com/statistics?league=12&season=2020-2021&team=" + teamID, {
 	    "method": "GET",
 	    "headers": {
-            "x-rapidapi-key": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "x-rapidapi-key": "a02badb577msh53c62c24f7e4112p157b9bjsne248c865880a",
             "x-rapidapi-host": "api-basketball.p.rapidapi.com"
         }
     })
     .then(response => {
         if (response.ok) {
             response.json().then(function (data) {
-                console.log(data);
                 displayTeamData(data);
             });
         }
@@ -141,37 +140,7 @@ function getStats(teamID) {
         var logo = getLogo(teamCode);
         var teamId = teamIds[teamCode];
         var winLoss = getStats(teamId);
-        console.log(teamCode);
     }
-
-// GAME TIME
-function gameCountdown(data) {
-
-    // Countdown till game
-    var countDownDate = new Date(data[0].dates.start.localDate).getTime();
-
-    var x = setInterval(function() {
-        var now = new Date().getTime();
-        var distance = countDownDate - now;
-
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-            + minutes + "m " + seconds + "s ";
-    }, 1000);
-};
-
-function getTeamInfo() {
-    var teamCode = team.toLowerCase().replaceAll("%20", "");
-    var logo = getLogo(teamCode);
-    var teamId = teamIds[teamCode];
-    var winLoss = getStats(teamId);
-    console.log(teamCode);
-}
 
 getTeamInfo();
 
@@ -182,7 +151,6 @@ $.ajax({
     async: true,
     dataType: "json",
     success: function (res) {
-        console.log("**********",res);
         const eventData = res._embedded.events;
 
         gameCountdown(eventData);
@@ -193,7 +161,6 @@ $.ajax({
             for (var j = 0; j < teams.length; j++ ) {
                 teams[j] = teams[j].toLowerCase().replaceAll(' ', '');
             };
-            console.log(teams);
             var team1Logo = getLogo(teams[0]);
             var team2Logo = getLogo(teams[1]);
             gameCardsEl.innerHTML += `
