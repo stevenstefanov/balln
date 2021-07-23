@@ -12,7 +12,7 @@ Balln is a sports app leveraging 2 APIs, the first being the Basketball API whic
 
 ## Link to Deployed Project 
 
-https://stevenstefanov.github.io/nba-game-locator
+https://stevenstefanov.github.io/balln
 
 ## What were the challenges?
 
