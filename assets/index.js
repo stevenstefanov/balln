@@ -47,7 +47,7 @@ fetch("https://api-basketball.p.rapidapi.com/teams?league=12&season=2020-2021", 
 	console.error(err);
 });
 
-// Function with for loop which populates team names in drop down menu
+// Function to populate team names in drop down menu
 function displayTeamData(data) {
   for (var i = 0; i < data.response.length-2; i++) {
     var teamName = data.response[i].name;

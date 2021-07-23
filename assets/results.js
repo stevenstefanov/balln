@@ -15,7 +15,7 @@ if (!team) {
     location.replace("./index.html");
 }
 
-// Object with all teams and their ids
+// Object with all teams and their API ids
 var teamIds = {
     atlantahawks: 132,
     bostonceltics: 133,
@@ -80,7 +80,7 @@ function getStats(teamID) {
         // TEAM NAMES
         var teamName = data.response.team.name;
 
-        // Creates span for titles with team names, the append to HTML EL
+        // Creates span for titles with team names, the appends to HTML El
         var teamTitle = document.createElement('h2');
         teamTitle.textContent = teamName;
         teamTitle.setAttribute("style", "background-color: #000; font-family: 'Anton', sans-serif; font-size: var(--title-font);");
