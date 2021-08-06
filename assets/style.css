@@ -53,7 +53,7 @@ h5 {
 
 }
 
-/*///NBA API fetched card classes///*/
+/*/ NBA API fetched card classes/*/
 .section-card {
     display:flex; 
     justify-content: center; 
@@ -76,8 +76,7 @@ h5 {
     height: auto;
 }
 
-/*/ stats-table classes /*/
-
+/*/ Stats - table classes /*/
 #selectedTeam {
     background-color: #f2f2f2;
     align-items: center;
@@ -113,9 +112,9 @@ h5 {
 
 
 
-/*///ticketmaster fetched card classes///*/
+/*/ Ticketmaster fetched card classes /*/
 
-/*///section wrapper///*/
+/*/ Section wrapper /*/
 #futuregames {
     display:flex;
     justify-content: center;
@@ -190,9 +189,7 @@ h5 {
 
 }
 
-/*///mobile media queries///*/
-
-
+/*/ Mobile media queries /*/
 @media only screen and (max-width: 400px) {
     :root{
         --global-section-width: 95%;
@@ -221,8 +218,7 @@ h5 {
     }
   }
 
-  /*///tablet media queries///*/
-
+  /*/ Tablet media queries /*/
   @media only screen and (max-width: 768px) {
     :root{
         --global-section-width: 80%;

@@ -1,4 +1,4 @@
-## Balln
+# Balln
 
 ## Project Description
 
@@ -14,18 +14,17 @@ Balln is a sports app leveraging 2 APIs, the first being the Basketball API whic
 
 https://stevenstefanov.github.io/balln
 
-## What were the challenges?
-
-One of the main challenges was integrating the data from both APIs and translating the data and results from one API to get a result from the second one. Another challenge was that the team logos on the Basketball API were either different sizes or sometimes missing. However, saving all logos locally as .svg files solved that issue.
-
-## Why did I decide to do this project?
+## Background
 
 I love watching and playing sports and thought it would be a really neat project to try building an app that would give some season statistics and ticket options. The basketball choice was another one of the team member's selections but it still achieved the desired goal that I had.
 
-## What I learned in the process?
+## Challenges
+
+One of the main challenges was integrating the data from both APIs and translating the data and results from one API to get a result from the second one. Another challenge was that the team logos on the Basketball API were either different sizes or sometimes missing. However, saving all logos locally as .svg files solved that issue.
+
+## Learnings
 
 This was my first team project so I learned a lot about GitHub, version control and how to properly set up a repo with multiple contributors. I also learned a lot about how to read data being pulled from third-party APIs and how to apply it in my work.
-
 
 ## Usage
 The app loads, the user is presented with a dropdown menu which will display a list of all NBA teams. Once the user selects their team and clicks on the `Submit` button, the app loads a page displaying information about the selected team's season statistics and future dated games with Ticketmaster link information.
